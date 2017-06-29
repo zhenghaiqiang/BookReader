@@ -99,8 +99,6 @@ public class MainActivity extends BaseActivity implements MainContract.View, Log
     private static final int BACK_PRESSED_INTERVAL = 2000;
 
     private LoginPopupWindow popupWindow;
-    public static Tencent mTencent;
-    public IUiListener loginListener;
     private GenderPopupWindow genderPopupWindow;
 
     @Override
@@ -125,8 +123,6 @@ public class MainActivity extends BaseActivity implements MainContract.View, Log
     @Override
     public void initDatas() {
         startService(new Intent(this, DownloadBookService.class));
-
-        mTencent = Tencent.createInstance("1105670298", MainActivity.this);
 
         mDatas = Arrays.asList(getResources().getStringArray(R.array.home_tabs));
         mTabContents = new ArrayList<>();
@@ -192,38 +188,38 @@ public class MainActivity extends BaseActivity implements MainContract.View, Log
             case R.id.action_search:
                 startActivity(new Intent(MainActivity.this, SearchActivity.class));
                 break;
-            case R.id.action_login:
-                if (popupWindow == null) {
-                    popupWindow = new LoginPopupWindow(this);
-                    popupWindow.setLoginTypeListener(this);
-                }
-                popupWindow.showAtLocation(mCommonToolbar, Gravity.CENTER, 0, 0);
-                break;
-            case R.id.action_my_message:
-                if (popupWindow == null) {
-                    popupWindow = new LoginPopupWindow(this);
-                    popupWindow.setLoginTypeListener(this);
-                }
-                popupWindow.showAtLocation(mCommonToolbar, Gravity.CENTER, 0, 0);
-                break;
-            case R.id.action_sync_bookshelf:
-                showDialog();
-                mPresenter.syncBookShelf();
-               /* if (popupWindow == null) {
-                    popupWindow = new LoginPopupWindow(this);
-                    popupWindow.setLoginTypeListener(this);
-                }
-                popupWindow.showAtLocation(mCommonToolbar, Gravity.CENTER, 0, 0);*/
-                break;
+//            case R.id.action_login:
+//                if (popupWindow == null) {
+//                    popupWindow = new LoginPopupWindow(this);
+//                    popupWindow.setLoginTypeListener(this);
+//                }
+//                popupWindow.showAtLocation(mCommonToolbar, Gravity.CENTER, 0, 0);
+//                break;
+//            case R.id.action_my_message:
+//                if (popupWindow == null) {
+//                    popupWindow = new LoginPopupWindow(this);
+//                    popupWindow.setLoginTypeListener(this);
+//                }
+//                popupWindow.showAtLocation(mCommonToolbar, Gravity.CENTER, 0, 0);
+//                break;
+//            case R.id.action_sync_bookshelf:
+//                showDialog();
+//                mPresenter.syncBookShelf();
+//               /* if (popupWindow == null) {
+//                    popupWindow = new LoginPopupWindow(this);
+//                    popupWindow.setLoginTypeListener(this);
+//                }
+//                popupWindow.showAtLocation(mCommonToolbar, Gravity.CENTER, 0, 0);*/
+//                break;
             case R.id.action_scan_local_book:
                 ScanLocalBookActivity.startActivity(this);
                 break;
             case R.id.action_wifi_book:
                 WifiBookActivity.startActivity(this);
                 break;
-            case R.id.action_feedback:
-                FeedbackActivity.startActivity(this);
-                break;
+//            case R.id.action_feedback:
+//                FeedbackActivity.startActivity(this);
+//                break;
             case R.id.action_night_mode:
                 if (SharedPreferencesUtil.getInstance().getBoolean(Constant.ISNIGHT, false)) {
                     SharedPreferencesUtil.getInstance().putBoolean(Constant.ISNIGHT, false);
@@ -296,12 +292,12 @@ public class MainActivity extends BaseActivity implements MainContract.View, Log
 
     @Override
     public void onLogin(ImageView view, String type) {
-        if (type.equals("QQ")) {
-            if (!mTencent.isSessionValid()) {
-                if (loginListener == null) loginListener = new BaseUIListener();
-                mTencent.login(this, "all", loginListener);
-            }
-        }
+//        if (type.equals("QQ")) {
+//            if (!mTencent.isSessionValid()) {
+//                if (loginListener == null) loginListener = new BaseUIListener();
+//                mTencent.login(this, "all", loginListener);
+//            }
+//        }
         //4f45e920ff5d1a0e29d997986cd97181
     }
 
@@ -341,10 +337,10 @@ public class MainActivity extends BaseActivity implements MainContract.View, Log
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == Constants.REQUEST_LOGIN || requestCode == Constants.REQUEST_APPBAR) {
-            Tencent.onActivityResultData(requestCode, resultCode, data, loginListener);
-        }
-        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == Constants.REQUEST_LOGIN || requestCode == Constants.REQUEST_APPBAR) {
+//            Tencent.onActivityResultData(requestCode, resultCode, data, loginListener);
+//        }
+//        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

@@ -25,23 +25,23 @@
         android:icon="@drawable/abc_ic_search_api_mtrl_alpha"
         app:showAsAction="ifRoom"/>
 
-    <item
-        android:id="@+id/action_login"
-        android:title="@string/menu_main_please_login"
-        android:icon="@drawable/home_menu_0"
-        app:showAsAction="never" />
+    <!--<item-->
+        <!--android:id="@+id/action_login"-->
+        <!--android:title="@string/menu_main_please_login"-->
+        <!--android:icon="@drawable/home_menu_0"-->
+        <!--app:showAsAction="never" />-->
 
-    <item
-        android:id="@+id/action_my_message"
-        android:title="@string/menu_main_my_message"
-        android:icon="@drawable/home_menu_1"
-        app:showAsAction="never" />
+    <!--<item-->
+        <!--android:id="@+id/action_my_message"-->
+        <!--android:title="@string/menu_main_my_message"-->
+        <!--android:icon="@drawable/home_menu_1"-->
+        <!--app:showAsAction="never" />-->
 
-    <item
-        android:id="@+id/action_sync_bookshelf"
-        android:title="@string/menu_main_sync_bookshelf"
-        android:icon="@drawable/home_menu_2"
-        app:showAsAction="never" />
+    <!--<item-->
+        <!--android:id="@+id/action_sync_bookshelf"-->
+        <!--android:title="@string/menu_main_sync_bookshelf"-->
+        <!--android:icon="@drawable/home_menu_2"-->
+        <!--app:showAsAction="never" />-->
 
     <item
         android:id="@+id/action_scan_local_book"
@@ -55,11 +55,11 @@
         android:icon="@drawable/home_menu_4"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/action_feedback"
-        android:title="@string/menu_main_feedback"
-        android:icon="@drawable/home_menu_5"
-        app:showAsAction="never" />
+    <!--<item-->
+        <!--android:id="@+id/action_feedback"-->
+        <!--android:title="@string/menu_main_feedback"-->
+        <!--android:icon="@drawable/home_menu_5"-->
+        <!--app:showAsAction="never" />-->
 
     <item
         android:id="@+id/action_night_mode"
