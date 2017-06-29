@@ -14,21 +14,25 @@ android {
     }
 
     signingConfigs {
+        debug {
+            keyAlias 'zhqdebug'
+            keyPassword 'wbzdghdn'
+            storeFile file('debug/zhqdebug.jks')
+            storePassword 'wbzdghdn'
+        }
         release {
-            storeFile file(KEYSTORE_FILE)
-            storePassword KEYSTORE_PWD
-            keyAlias KEY_ALIAS
-            keyPassword KEY_PWD
+            keyAlias 'zhqdebug'
+            keyPassword 'wbzdghdn'
+            storeFile file('debug/zhqdebug.jks')
+            storePassword 'wbzdghdn'
         }
     }
-
     buildTypes {
         debug {
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
         }
-
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
