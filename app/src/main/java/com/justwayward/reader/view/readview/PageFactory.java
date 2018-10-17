@@ -33,6 +33,7 @@ import com.justwayward.reader.utils.AppUtils;
 import com.justwayward.reader.utils.FileUtils;
 import com.justwayward.reader.utils.LogUtils;
 import com.justwayward.reader.utils.ScreenUtils;
+import com.justwayward.reader.utils.ZHUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -107,6 +108,8 @@ public class PageFactory {
 
     private OnReadStateChangeListener listener;
     private String charset = "UTF-8";
+
+    public static boolean isSimple = true;
 
     public PageFactory(Context context, String bookId, List<BookMixAToc.mixToc.Chapters> chaptersList) {
         this(context, ScreenUtils.getScreenWidth(), ScreenUtils.getScreenHeight(),
@@ -220,16 +223,37 @@ public class PageFactory {
                 canvas.drawColor(Color.WHITE);
             }
             // 绘制标题
-            canvas.drawText(chaptersList.get(currentChapter - 1).title, marginWidth, y, mTitlePaint);
+            String simpleZH = chaptersList.get(currentChapter - 1).title;
+            String complexZH = "";
+            if(isSimple) {
+                complexZH = simpleZH;
+            } else {
+                complexZH = ZHUtils.getComplexZH(simpleZH);
+            }
+            canvas.drawText(complexZH, marginWidth, y, mTitlePaint);
             y += mLineSpace + mNumFontSize;
             // 绘制阅读页面文字
             for (String line : mLines) {
                 y += mLineSpace;
                 if (line.endsWith("@")) {
-                    canvas.drawText(line.substring(0, line.length() - 1), marginWidth, y, mPaint);
+                    String lineSimpleZH = line.substring(0, line.length() - 1);
+                    String lineComplexZH = "";
+                    if(isSimple) {
+                        lineComplexZH = lineSimpleZH;
+                    } else {
+                        lineComplexZH = ZHUtils.getComplexZH(lineSimpleZH);
+                    }
+                    canvas.drawText(lineComplexZH, marginWidth, y, mPaint);
                     y += mLineSpace;
                 } else {
-                    canvas.drawText(line, marginWidth, y, mPaint);
+                    String lineSimpleZH = line;
+                    String lineComplexZH = "";
+                    if(isSimple) {
+                        lineComplexZH = lineSimpleZH;
+                    } else {
+                        lineComplexZH = ZHUtils.getComplexZH(lineSimpleZH);
+                    }
+                    canvas.drawText(lineComplexZH, marginWidth, y, mPaint);
                 }
                 y += mFontSize;
             }

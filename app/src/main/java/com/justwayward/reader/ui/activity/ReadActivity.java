@@ -212,6 +212,8 @@ public class ReadActivity extends BaseActivity implements BookReadContract.View 
     private boolean isAutoLightness = false; // 记录其他页面是否自动调整亮度
     private boolean isFromSD = false;
 
+    private int zhType = 0; //繁体还是简体，0表示简体，1表示繁体
+
     //添加收藏需要，所以跳转的时候传递整个实体类
     public static void startActivity(Context context, Recommend.RecommendBooks recommendBooks) {
         startActivity(context, recommendBooks, false);
@@ -828,15 +830,28 @@ public class ReadActivity extends BaseActivity implements BookReadContract.View 
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
             if (SettingManager.getInstance().isVolumeFlipEnable()) {
-                mPageWidget.nextPage();
+                zhType++;
+                mPageWidget.setZH(zhType);
                 return true;// 防止翻页有声音
             }
         } else if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
             if (SettingManager.getInstance().isVolumeFlipEnable()) {
-                mPageWidget.prePage();
+                zhType++;
+                mPageWidget.setZH(zhType);
                 return true;
             }
         }
+//        if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+//            if (SettingManager.getInstance().isVolumeFlipEnable()) {
+//                mPageWidget.nextPage();
+//                return true;// 防止翻页有声音
+//            }
+//        } else if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+//            if (SettingManager.getInstance().isVolumeFlipEnable()) {
+//                mPageWidget.prePage();
+//                return true;
+//            }
+//        }
         return super.onKeyUp(keyCode, event);
     }
 

@@ -275,6 +275,17 @@ public abstract class BaseReadView extends View {
 
     }
 
+    public void setZH(int zhType) {
+        if(zhType%2==0) {
+            PageFactory.isSimple = true;
+        } else {
+            PageFactory.isSimple = false;
+        }
+        pagefactory.onDraw(mCurrentPageCanvas);
+        pagefactory.onDraw(mNextPageCanvas);
+        postInvalidate();
+    }
+
     public void prePage() {
         BookStatus status = pagefactory.prePage();
         if (status == BookStatus.NO_PRE_PAGE) {
